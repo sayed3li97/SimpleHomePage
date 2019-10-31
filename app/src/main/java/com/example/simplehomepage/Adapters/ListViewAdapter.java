@@ -6,7 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.simplehomepage.MainActivity;
 import com.example.simplehomepage.Model.Items;
@@ -32,6 +36,8 @@ public class ListViewAdapter  extends BaseAdapter {
         ImageView image;
     }
 
+
+
     @Override
     public int getCount() {
         return MainActivity.itemsArrayList.size();
@@ -49,21 +55,27 @@ public class ListViewAdapter  extends BaseAdapter {
 
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
-        if (view == null) {
-            holder = new ViewHolder();
-            view = inflater.inflate(R.layout.listview_item, null);
-            // Locate the TextViews in listview_item.xml
-            holder.name = (TextView) view.findViewById(R.id.name);
-            holder.image = (ImageView) view.findViewById(R.id.listImageView);
 
-            view.setTag(holder);
+        if (view == null) {
+
+                holder = new ViewHolder();
+                view = inflater.inflate(R.layout.listview_item, null);
+                // Locate the TextViews in listview_item.xml
+                holder.name = (TextView) view.findViewById(R.id.name);
+                holder.image = (ImageView) view.findViewById(R.id.listImageView);
+
+                view.setTag(holder);
+
+                // Set the results into TextViews and Image view
+                holder.name.setText(MainActivity.itemsArrayList.get(position).getLabel());
+                if (MainActivity.itemsArrayList.get(position).getImg() != null)
+                    holder.image.setImageResource(Integer.valueOf(MainActivity.itemsArrayList.get(position).getImg()));
+
+
         } else {
-            holder = (ViewHolder) view.getTag();
+//            holder = (ViewHolder) view.getTag();
         }
-        // Set the results into TextViews and Image view
-        holder.name.setText(MainActivity.itemsArrayList.get(position).getLabel());
-        if (MainActivity.itemsArrayList.get(position).getImg() != null)
-        holder.image.setImageResource(Integer.valueOf(MainActivity.itemsArrayList.get(position).getImg()));
+
         return view;
     }
 

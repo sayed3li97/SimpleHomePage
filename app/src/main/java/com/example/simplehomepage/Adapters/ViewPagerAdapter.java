@@ -30,9 +30,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     private String [] images = {
             String.valueOf(R.drawable.dominos),
-            String.valueOf(R.mipmap.ic_launcher_round),
-            String.valueOf(R.mipmap.ic_launcher_round),
-            String.valueOf(R.mipmap.ic_launcher_round),
+            "https://cdnpt01.viewbug.com/media/mediafiles/2015/10/16/59560665_medium.jpg",
+            "http://t.wallpaperweb.org/wallpaper/nature/1920x1080/Small_Copper_Butterfly.jpg",
+            "https://cdn.pixabay.com/photo/2015/06/26/23/40/mushroom-823090_1280.jpg",
             "https://www.bank-abc.com/SiteCollectionImages/Header/headerLogoBankABC.png"
     };
 

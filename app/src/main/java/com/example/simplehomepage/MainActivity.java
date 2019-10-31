@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         });
 
 
-        //TODO: List View Data
-
         // Generate sample data
 
         labelsList = new String[]{
@@ -112,17 +110,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 "Manama",
                 "Bahrain"};
         imagesList = new String[]{
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
-                String.valueOf(R.mipmap.ic_launcher_round),
+                String.valueOf(R.drawable.avatar1),
+                String.valueOf(R.drawable.avatar2),
+                String.valueOf(R.drawable.avatar3),
+                String.valueOf(R.drawable.avatar4),
+                String.valueOf(R.drawable.avatar5),
+                String.valueOf(R.drawable.avatar6),
+                String.valueOf(R.drawable.avatar7),
+                String.valueOf(R.drawable.avatar2),
+                String.valueOf(R.drawable.avatar8),
+                String.valueOf(R.drawable.avatar9),
+                String.valueOf(R.drawable.avatar15),
         };
 
         list = (ListView) findViewById(R.id.listview);
