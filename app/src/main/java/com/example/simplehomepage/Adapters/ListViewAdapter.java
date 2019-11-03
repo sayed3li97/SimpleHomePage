@@ -20,10 +20,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class ListViewAdapter  extends BaseAdapter {
+
     Context context;
     LayoutInflater inflater;
     private ArrayList<Items> arraylist;
 
+    //Adapter constructor
     public ListViewAdapter(Context context ) {
         this.context = context;
         inflater = LayoutInflater.from(this.context);
@@ -31,6 +33,7 @@ public class ListViewAdapter  extends BaseAdapter {
         this.arraylist.addAll(MainActivity.itemsArrayList);
     }
 
+    //View holder to be able to use row items
     public class ViewHolder {
         TextView name;
         ImageView image;
@@ -56,7 +59,6 @@ public class ListViewAdapter  extends BaseAdapter {
     public View getView(final int position, View view, ViewGroup parent) {
         final ViewHolder holder;
 
-        if (view == null) {
 
                 holder = new ViewHolder();
                 view = inflater.inflate(R.layout.listview_item, null);
@@ -70,11 +72,6 @@ public class ListViewAdapter  extends BaseAdapter {
                 holder.name.setText(MainActivity.itemsArrayList.get(position).getLabel());
                 if (MainActivity.itemsArrayList.get(position).getImg() != null)
                     holder.image.setImageResource(Integer.valueOf(MainActivity.itemsArrayList.get(position).getImg()));
-
-
-        } else {
-//            holder = (ViewHolder) view.getTag();
-        }
 
         return view;
     }

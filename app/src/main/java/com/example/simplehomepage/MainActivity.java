@@ -21,13 +21,14 @@ import com.example.simplehomepage.Model.Items;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener  {
-    //    ViewPager viewPager;
+
+    // Declare Variables
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
 
-    // Declare Variables
+
     private ListView list;
     private ListViewAdapter adapter;
     private SearchView editsearch;
@@ -108,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 "Steve",
                 "Jobs",
                 "Manama",
+                "Manama",
+                "Manama",
                 "Bahrain"};
         imagesList = new String[]{
                 String.valueOf(R.drawable.avatar1),
@@ -117,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 String.valueOf(R.drawable.avatar5),
                 String.valueOf(R.drawable.avatar6),
                 String.valueOf(R.drawable.avatar7),
+                String.valueOf(R.drawable.avatar2),
+                String.valueOf(R.drawable.avatar2),
                 String.valueOf(R.drawable.avatar2),
                 String.valueOf(R.drawable.avatar8),
                 String.valueOf(R.drawable.avatar9),
