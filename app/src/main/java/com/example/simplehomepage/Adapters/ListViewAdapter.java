@@ -15,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.simplehomepage.MainActivity;
 import com.example.simplehomepage.Model.Items;
 import com.example.simplehomepage.R;
+import com.example.simplehomepage.Utils.DownloadImageFromInternet;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -33,6 +34,10 @@ public class ListViewAdapter  extends BaseAdapter {
         this.arraylist.addAll(MainActivity.itemsArrayList);
     }
 
+    public void updateArryaList (ArrayList array) {
+        this.arraylist.clear();
+        this.arraylist.addAll(array);
+    }
     //View holder to be able to use row items
     public class ViewHolder {
         TextView name;
@@ -70,8 +75,18 @@ public class ListViewAdapter  extends BaseAdapter {
 
                 // Set the results into TextViews and Image view
                 holder.name.setText(MainActivity.itemsArrayList.get(position).getLabel());
-                if (MainActivity.itemsArrayList.get(position).getImg() != null)
+
+                if(!MainActivity.itemsArrayList.get(position).getImg().contains("http"))
                     holder.image.setImageResource(Integer.valueOf(MainActivity.itemsArrayList.get(position).getImg()));
+                else {
+                    // if the image is loaded from the internet use the
+                    new DownloadImageFromInternet(holder.image)
+                    .execute(MainActivity.itemsArrayList.get(position).getImg());
+                }
+
+//
+//                if (MainActivity.itemsArrayList.get(position).getImg() != null)
+//                    holder.image.setImageResource(Integer.valueOf(MainActivity.itemsArrayList.get(position).getImg()));
 
         return view;
     }

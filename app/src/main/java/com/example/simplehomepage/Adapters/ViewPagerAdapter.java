@@ -17,7 +17,9 @@ import android.widget.Toast;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.simplehomepage.Data.CarouselData;
 import com.example.simplehomepage.R;
+import com.example.simplehomepage.Utils.DownloadImageFromInternet;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,16 +30,11 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private String [] images = {
-            String.valueOf(R.drawable.dominos),
-            "https://cdnpt01.viewbug.com/media/mediafiles/2015/10/16/59560665_medium.jpg",
-            "http://t.wallpaperweb.org/wallpaper/nature/1920x1080/Small_Copper_Butterfly.jpg",
-            "https://cdn.pixabay.com/photo/2015/06/26/23/40/mushroom-823090_1280.jpg",
-            "https://www.bank-abc.com/SiteCollectionImages/Header/headerLogoBankABC.png"
-    };
+    private String [] images ;
 
     public ViewPagerAdapter(Context context) {
         this.context = context;
+        this.images = CarouselData.images;
 
     }
 
@@ -57,14 +54,11 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         if(!images[position].contains("http"))
             imageView.setImageResource(Integer.valueOf(images[position]));
         else {
-//            Bitmap bmp = null;
-//                URL url = new URL(images[position]);
-//                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-//            imageView.setImageBitmap(bmp);
+            // if the image is loaded from the internet use the
             new DownloadImageFromInternet(imageView)
                     .execute(images[position]);
 
@@ -86,32 +80,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         vp.removeView(view);
 
     }
-    private class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
-        ImageView imageView;
 
-        public DownloadImageFromInternet(ImageView imageView) {
-            this.imageView = imageView;
-//            Toast.makeText(getApplicationContext(), "Please wait, it may take a few minute...", Toast.LENGTH_SHORT).show();
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String imageURL = urls[0];
-            Bitmap bimage = null;
-            try {
-                InputStream in = new java.net.URL(imageURL).openStream();
-                bimage = BitmapFactory.decodeStream(in);
-
-            } catch (Exception e) {
-                Log.e("Error Message", e.getMessage());
-                e.printStackTrace();
-            }
-            return bimage;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            imageView.setImageBitmap(result);
-        }
-    }
 
 
 }
